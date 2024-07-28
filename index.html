@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>เหงา</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Sarabun&display=swap");
+
+    *,
+    body {
+      font-family: "Sarabun", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+  <button class="btn" id="myButton">กดตรงนี้สิจ้ะเบบี๋</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    const button = document.getElementById("myButton");
+    let clickCount = 0;
+    const messages = [
+      "กดตรงนี้สิจ้ะเบบี๋",
+      "อ๊าาา~ กดจริงด้วย😍",
+      "อื้ม~ กดอีกได้มั้ย🥺",
+      "อื้อออส์ เอาอีกกก🥵",
+      "อ๊าส์~~ อื้อส์~~",
+      "อื้มส์~~ อ๊าส์~~",
+      "อีกนิดเดียวว🥺",
+      "อื้อออส์ อีกนิดดด",
+      ". .",
+      ". . .",
+      ". . . .",
+    ];
+
+    function typeText(element, text, index, interval) {
+      if (index < text.length) {
+        element.textContent += text.charAt(index);
+        index++;
+        setTimeout(() => typeText(element, text, index, interval), interval);
+      }
+    }
+
+    button.addEventListener("click", function () {
+      clickCount++;
+      if (clickCount % 11 === 0) {
+        Swal.fire({
+          title: "อ๊าาาาาาาาาส์",
+          text: "คุณได้ช่วยทำให้ปุ่มๆนึงถึงจุดสุดยอดได้!! เก่งไม่เบาเลยนี้",
+          icon: "warning",
+          confirmButtonText: "เหี้ยไรเนี้ย",
+        }).then(() => {
+          clickCount = 0;
+          button.textContent = "";
+          typeText(button, messages[0], 0, 100);
+        });
+      } else {
+        const newMessage = messages[clickCount % messages.length];
+        button.textContent = "";
+        typeText(button, newMessage, 0, 100);
+      }
+    });
+  </script>
+</body>
+
+</html>
