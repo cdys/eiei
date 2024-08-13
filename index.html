@@ -8,6 +8,14 @@
 </head>
 <body>
     <canvas class="webgl"></canvas>
+    <audio id="background-music" src="song.mp3" autoplay loop></audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById('background-music');
+            audio.play();
+        });
+    </script>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r124/three.min.js"></script>
